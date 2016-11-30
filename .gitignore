@@ -1,0 +1,9 @@
+# Ignore these py files
+fxprime/settings.py
+
+# folders
+results_images
+
+# Output files
+*.log
+*.csv
