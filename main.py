@@ -30,10 +30,10 @@ def main(oanda):
                         level=logging.INFO,  
                         format='%(asctime)s - %(levelname)s - %(message)s', 
                         datefmt='%m/%d/%Y %I:%M:%S %p')
-                        
+
     # Declare variables
     pairs = ['EUR_USD']
-    backtest = False
+    backtest = True
     plot = True
     verbose = False
 
