@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FXprime.iml" filepath="$PROJECT_DIR$/.idea/FXprime.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/visualization/.idea/visualization.iml" filepath="$USER_HOME$/Desktop/visualization/.idea/visualization.iml" />
     </modules>
   </component>
 </project>

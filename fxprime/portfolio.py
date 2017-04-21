@@ -21,6 +21,7 @@ import pandas as pd
 
 # TODO can make a function in scripts to get rid of this import
 import dateutil.parser
+import csv
     
 class Portfolio:
     def __init__(
@@ -42,7 +43,7 @@ class Portfolio:
         self.prev_equity = self.start_equity
     
     def run_backtest(self, portfolio, args, duration=50000):
-        # Crerate results file
+        # Create results file
         # self.backtest_file_path
         self._create_equity_file()
         self.args = args
@@ -65,43 +66,45 @@ class Portfolio:
         candle = {u'highAsk': 1.13446, u'lowAsk': 1.13444, u'complete': True, u'openBid': 1.13432, u'closeAsk': 1.13444, u'closeBid': 1.13429, u'volume': 2, u'openAsk': 1.13446, u'time': u'2016-06-03T19:16:00.000000Z', u'lowBid': 1.13429, u'highBid': 1.13432}
         """
         
+        if event['type'] != None:
 
-        if event['pair'] in self.positions:
-            # Update position
-            # Closes a FIFO violation
-            closed = self._backtest_close(event, candle)
-            if not closed:
-                logging.error('Failed to close simulated trade')
-            else:
-                logging.info('FIFO closed')
-        
-        if event['type'] == 'buy':
-            # Check for FIFO error
-            # Updated unrealized PnL
-            bought = self._backtest_buy(event, candle)
-            if not bought:
-                logging.error('Failed to buy simulated trade')
-            else:
-                logging.info('Bought')
-            
-        elif event['type'] == 'sell':
-            # Check for FIFO error            
-            sold = self._backtest_sell(event, candle)
-            if not sold:
-                logging.error('Failed to sell simulated trade')
-            else:
-                logging.info('Sold')
-        
-        elif event['type'] == 'close':
-            # Closing order
-            closed = self._backtest_close(event, candle)
-            if not closed:
-                logging.error('Failed to close simulated trade')
-            else:
-                logging.info('Closed')        
+            if event['pair'] in self.positions:
+                # Update position
+                # Closes a FIFO violation
+                closed = self._backtest_close(event, candle)
+                if not closed:
+                    logging.error('Failed to close simulated trade')
+                else:
+                    logging.info('FIFO closed')
+
+            if event['type'] == 'buy':
+                # Check for FIFO error
+                # Updated unrealized PnL
+                bought = self._backtest_buy(event, candle)
+                if not bought:
+                    logging.error('Failed to buy simulated trade')
+                else:
+                    logging.info('Bought')
+
+            elif event['type'] == 'sell':
+                # Check for FIFO error
+                sold = self._backtest_sell(event, candle)
+                if not sold:
+                    logging.error('Failed to sell simulated trade')
+                else:
+                    logging.info('Sold')
+
+            elif event['type'] == 'close':
+                # Closing order
+                closed = self._backtest_close(event, candle)
+                if not closed:
+                    logging.error('Failed to close simulated trade')
+                else:
+                    logging.info('Closed')
                         
-        self._update_equity_file(event, candle, plots=False)#plots)  
+        self._update_equity_file(event, candle, plots=False)#plots)
 
+        # Recalculates max drawdown
         if self.start_equity-self.equity > self.max_drawdown:
             self.max_drawdown = self.start_equity-self.equity
                         
@@ -201,20 +204,27 @@ class Portfolio:
             os.makedirs(OUTPUT_RESULTS_DIR)        
         
         self.backtest_file_path = os.path.join(OUTPUT_RESULTS_DIR, filename)
-        
-        with open(self.backtest_file_path, "w") as f:       
-            header = "Timestamp,Balance,Event Type"
-            for pair in self.pairs:
-                header += ",%s,Percent Change" % pair
-            header += "\n"
-            f.write(header)
+
+        #with open(self.backtest_file_path, "w") as f:
+        f = open(self.backtest_file_path, "w")
+        header = ["Timestamp", "Balance", "Event Type"]
+        for pair in self.pairs:
+            header.append(pair)
+            header.append("Percent Change")
+        #header += "\n"
+        header.append("Strategy Info")
+        self.writer = csv.DictWriter(f, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL, fieldnames=header)
+
             
             
     def _update_equity_file(self, event, candle, plots=False):
         # This appends info to the equity file
-        row = str(candle['time'])
-        row += ",%s" % str(self.equity)
-        
+        row = {}
+        row['Timestamp'] = str(candle['time'])
+        row['Balance'] = str(self.equity)
+
+        # TODO move strategy_info into event dict so just one var is passed
+
         if event['type'] != None:
             if plots:
                 # Broken because writing to CSV and it will not execute equations
@@ -226,22 +236,18 @@ class Portfolio:
                 #print "=HYPERLINK(\"pics\\"+str(date_save)+".png\",\""+str(event['type'])+"\")"
                 #row += ",%s" % ("=HYPERLINK('\\pics\\"+date_save+".png','"+str(event['type'])+"')")
             else:
-                row += ",%s" % str(event['type'])
-        else:
-            row += ","
+                row['Event Type'] = str(event['type'])
         
         for pair in self.pairs:
             if pair == event['pair']:
-                row += ",%s" % candle['closeAsk']
-                row += ",%s" % str((self.equity-self.prev_equity)/self.prev_equity)
-            else:
-                row += ","
-                
-        row += "\n"
-        
-        with open(self.backtest_file_path, "a") as f:
-            f.write(row)
-            
+                row[pair] = candle['closeAsk']
+                row['Percent Change'] = str((self.equity-self.prev_equity)/self.prev_equity)
+
+        row['Strategy Info'] = event['strategy_info']
+
+        #with open(self.backtest_file_path, "a") as f:
+        self.writer.writerow(row)
+
         self.prev_equity = self.equity
             
         

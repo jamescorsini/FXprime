@@ -7,10 +7,11 @@ Created on Sat Jun 04 23:22:38 2016
 
 from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
+import pandas as pd
 
 class Backtester:
     """
-    Enscapsulates the settings and components for carrying out
+    Encapsulates the settings and components for carrying out
     an event-driven backtest on the foreign exchange markets.
     """
     def __init__(
@@ -28,6 +29,25 @@ class Backtester:
         self.oanda = oanda
         self.max_iters = max_iters
         self.candles = self._get_hist(duration)
+
+        import csv
+        with open('candle_dump.csv', 'w') as csvfile:
+            fieldnames = [u'highAsk',
+                             u'lowAsk',
+                             u'complete',
+                             u'openBid',
+                             u'closeAsk',
+                             u'closeBid',
+                             u'volume',
+                             u'openAsk',
+                             u'time',
+                             u'lowBid',
+                             u'highBid']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+            writer.writeheader()
+            writer.writerows(self.candles)
+
         self.candle_ind = 0
         self.plots = plots
         
@@ -68,16 +88,21 @@ class Backtester:
         iters = 0
         
         while iters < self.max_iters and self.candle_ind != len(self.candles):
-            event = self.strategy.tick(self.candles[self.candle_ind], args=args, plot=False)
-            
+
+            event = self.strategy.tick(self.candles[self.candle_ind], params=args, plot=False)
+
+            # Pulled out of the if statement below to generate CSV that will show every tick
+            # This will run a lot slower now!
+            self.equity = portfolio.update_portfolio(event, self.candles[self.candle_ind], plots=False)
+
             if event['type'] is not None:
                 # Run command to create plots
                 if False: # This will change based off of function input in the future
-                    plot_success = self.strategy.create_plot()
+                    plot_success = self.strategy.create_plot() # Additional plots for strategy analysis
                 else:
                     plot_success = False
             
-                self.equity = portfolio.update_portfolio(event, self.candles[self.candle_ind], plots=plot_success)
+                #self.equity = portfolio.update_portfolio(event, self.candles[self.candle_ind], plots=plot_success)
             
             print 'Candle: ' + str(self.candle_ind) + '/' + str(len(self.candles)) + '   Equity: ' + str(self.equity)
             self.candle_ind += 1

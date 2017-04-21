@@ -23,8 +23,6 @@ class trading_algo():
     '''    
     def __init__(self, oanda, account_id, pair, verbose=False):
         # this is going to be one algorithm per currancy pair
-        print '----------- ADRIAN FX Trading Algo has started ------------'
-        logging.info('----------- ADRIAN FX Trading Algo has started ------------')
         self.pair = pair;
         self.oanda = oanda;
         self.account_id = account_id;
@@ -50,6 +48,7 @@ class trading_algo():
               
         # Main part of the algorithm
         # This is a common SMA crossover trader
+        print("Exxxxxxxxxxxxxxxxxxxxxxxx SMA")
         if len(self.candles) >= 50:
             # Grab SMA from existing history
             candles_hist = self.candles[-50:]    

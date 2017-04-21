@@ -22,8 +22,9 @@ from fxprime import NN_regression_strategy as fxprime_strategy
 
 from sklearn.grid_search import ParameterGrid
 
-
 def main(oanda):
+
+    print '--------------- FXPRIME Starting ---------------'
         
     # Set up logging
     logging.basicConfig(filename=os.getcwd()+'\\adrian.log', 
@@ -34,7 +35,7 @@ def main(oanda):
     # Declare variables
     pairs = ['EUR_USD']
     backtest = True
-    plot = True
+    plot = False # For pyplot
     verbose = False
 
 
@@ -48,7 +49,7 @@ def main(oanda):
         # Run streamer object to run strategy in real time
         # https://plot.ly/8/~Vedrfolnir/
     
-        #output.init_stream_plot()
+        # output.init_stream_plot()
         
         stream = streamer.MyStreamer(oanda, 
                                      settings.ACCOUNT_ID, 
@@ -62,11 +63,12 @@ def main(oanda):
         stream.start(instruments=pairs[0], grainularity='M1')
         
     else:
-        
+        # Runs backtest
+
         #args = {'C': [10,100,1000], 'n_train': [10,15,20], 'score': [0.9,0.5,0.75], 'wait': [5,10,15], 'kernel': ['poly','rbf'], 'degree': [2]}
         args = {'C': [10], 'n_train': [10,15,20], 'score': [0.9], 'wait': [5,10,15], 'kernel': ['poly'], 'degree': [2]}
         
-        # list of all possibilities, itterate through    
+        # list of all possibilities, iterates through
         param_grid = list(ParameterGrid(args))    
         
         for (i, params) in enumerate(param_grid): 
@@ -88,11 +90,13 @@ if __name__ == "__main__":
     
     # Log total run time
     start_time = time.time()    
-    
+
+    # TODO: Move this into the main loop.  no need to clutter this up
     # Initialize the API env
     oanda = oandapy.API(environment=settings.ENVIRONMENT, 
                         access_token=settings.ACCESS_TOKEN)
-    
+
+    # Code cleanup for when live trader is canceled
     try:
         main(oanda)
     except KeyboardInterrupt:        
@@ -100,9 +104,8 @@ if __name__ == "__main__":
     except:
         print "Unknown Error"
     finally:
+        # TODO possible error when backtest is run this isn't necessary and will close open trades
         scripts.close_all_open(oanda, settings.ACCOUNT_ID)
         
     print 'Total run time: ' + str((time.time()-start_time)/60) + ' min'
 
-
-    

@@ -28,23 +28,21 @@ import matplotlib.pyplot as plt
 
 class trading_algo():
     ''' Trading algorithm, this will be the only thing changing with 
-        differnt strategies
+        different strategies
         It outputs and event, such as buy, sell, close, or None 
         candle = {u'highAsk': 1.13446, u'lowAsk': 1.13444, u'complete': True, 
         u'openBid': 1.13432, u'closeAsk': 1.13444, u'closeBid': 1.13429, 
         u'volume': 2, u'openAsk': 1.13446, u'time': u'2016-06-03T19:16:00.000000Z', 
         u'lowBid': 1.13429, u'highBid': 1.13432}
-    '''    
+    '''
     def __init__(self, oanda, account_id, pair, verbose=False):
         # this is going to be one algorithm per currancy pair
-        print '----------- ADRIAN FX Trading Algo has started ------------'
-        logging.info('----------- ADRIAN FX Trading Algo has started ------------')
-        self.pair = pair;
-        self.oanda = oanda;
-        self.account_id = account_id;
-        self.verbose = verbose;
-        self.high_bit = 0;
-        self.candles = [];
+        self.pair = pair
+        self.oanda = oanda
+        self.account_id = account_id
+        self.verbose = verbose
+        self.high_bit = 0
+        self.candles = []
         self.candle_df = pd.DataFrame(columns=['Open','High','Low','Close','Date'])
         self.buy_me = 3  
         self.sell_me = 2
@@ -58,8 +56,7 @@ class trading_algo():
 
         
     def create_plot(self):
-        # Create whatever plot is wanted in conjuction with the 
-        # event taking place
+        # Create whatever plot is wanted in conjunction with the event taking place
     
         try:
             fig = plt.figure()
@@ -71,7 +68,7 @@ class trading_algo():
             
             ymin = min(np.append(self.y,self.fitted))
             ymax = max(np.append(self.y,self.fitted))
-            ax.set_ylim([ymin,ymax]);
+            ax.set_ylim([ymin,ymax])
             
             ax.set_ylabel('Price EUR/USD')
             ax.set_xlabel('Candlestick increment')
@@ -103,19 +100,19 @@ class trading_algo():
             return False
         
     
-    def tick(self, tick_data, new_candles, params, plot=True):
+    def tick(self, new_candles, params, plot=True):
         
-        event = {'pair': self.pair, 'type': None};
+        event = {'pair': self.pair, 'type': None, 'strategy_info':{}}
         # For every successful datapoint grab this tick function is executed
         
         if params['C'] == None:
-            params['C'] = 1e1;
+            params['C'] = 1e1
         if params['n_train'] == None:
-            params['n_train'] = 10;
+            params['n_train'] = 10
         if params['score'] == None:
-            params['score'] = 0.9;
+            params['score'] = 0.9
         if params['wait'] == None:
-            params['wait'] = 5;
+            params['wait'] = 5
         if params['kernel'] == None:
             params['kernel'] = 'rbf'
         if params['degree'] == None:
@@ -127,26 +124,23 @@ class trading_algo():
         # Parses the new candles and adds any that were not already accounted for
         for q in range(len(new_candles)):
             
-            if new_candles[q] not in self.candles:
+            if new_candles not in self.candles:
             
-                self.candle_df.loc[len(self.candles)] = [new_candles[q]['openBid'],
-                                   new_candles[q]['highBid'], new_candles[q]['lowBid'],
-                                   new_candles[q]['closeBid'], 
-                                   dateutil.parser.parse(new_candles[q]['time'])]        
+                self.candle_df.loc[len(self.candles)] = [new_candles['openBid'],
+                                   new_candles['highBid'], new_candles['lowBid'],
+                                   new_candles['closeBid'],
+                                   dateutil.parser.parse(new_candles['time'])]
                 
-                
-                # TODO Check to see if tick_data is already in candles
-                self.candles.append(new_candles[q])
+                self.candles.append(new_candles)
 
-        
-        end_time = tick_data['time']
+
         
         ''' -------------- Change strategy below this line ---------------- '''
         # Calculate strategy using stored candles when you can (optimizes 
         # the backtesting).  Change event type to 'buy' or 'sell'
         
         # -- Tuning variables --
-        n_train = params['n_train'][0]
+        n_train = params['n_train']
 
         if plot:
             # Create df of candles to pass to plots
@@ -157,7 +151,7 @@ class trading_algo():
                 output.pyplot_candles(self.candle_df)
         
         if self.verbose:
-            print tick_data
+            print new_candles
         
 
         # Set up X and y for regression
@@ -184,7 +178,7 @@ class trading_algo():
         # TOdO: Can use .score to detmine confidence level
         # TODO: Can average all of the fitted together to get a bettern 
         # general estimate like tree boosting
-        clf = svm.SVR(kernel=params['kernel'][0], gamma=0.1, degree=params['degree'][0], C=params['C'][0])
+        clf = svm.SVR(kernel=params['kernel'], gamma=0.1, degree=params['degree'], C=params['C'])
         #clf = svm.SVR(kernel='poly', degree=3)
         clf.fit(X, y) 
         
@@ -199,7 +193,7 @@ class trading_algo():
         print "close: "+str(self.candles[-1]['closeAsk'])+" fit: "+str(self.fitted[-1])+" buy: "+str(self.buy_me)+" sell: "+str(self.sell_me)+" score: "+str(self.score)
         
         # filter the buy/sell event
-        if self.score > params['score'][0]:
+        if self.score > params['score']:
         
             if (self.fitted[-1] > self.candles[-1]['closeAsk']):# and self.high_bit == 0):
                 
@@ -207,10 +201,10 @@ class trading_algo():
                 self.sell_me -= 1
                 if (self.buy_me > 3):# and self.high_bit == 0):  
                     print 'Crossover Point: Long'
-                    print tick_data
+                    print new_candles
                     logging.info('Crossover Point: Long')
-                    logging.info(tick_data)
-                    self.high_bit = 1;
+                    logging.info(new_candles)
+                    self.high_bit = 1
                     event['type'] = 'buy'
                     
             elif (self.fitted[-1] < self.candles[-1]['closeAsk']):# and self.high_bit == 1):
@@ -219,20 +213,19 @@ class trading_algo():
                 self.sell_me += 1
                 if (self.sell_me > 3):# and self.high_bit == 1):       
                     print 'Crossover Point: Short'
-                    print tick_data
+                    print new_candles
                     logging.info('Crossover Point: Short')
-                    logging.info(tick_data)
+                    logging.info(new_candles)
                     self.high_bit = 0;
                     event['type'] = 'sell'
             
-            if self.buy_me > params['wait'][0]:
-                self.buy_me = params['wait'][0]
+            if self.buy_me > params['wait']:
+                self.buy_me = params['wait']
                 self.sell_me = 0
-            elif self.sell_me > params['wait'][0]:
+            elif self.sell_me > params['wait']:
                 self.buy_me = 0
-                self.sell_me = params['wait'][0]
-                
-            
+                self.sell_me = params['wait']
+
         # Always end with returning event or code will break
-        return event        
+        return event
         
