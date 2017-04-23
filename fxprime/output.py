@@ -5,8 +5,7 @@ Created on Sun Jun 05 21:04:56 2016
 @author: james
 """
 
-import matplotlib
-matplotlib.use('agg')
+from matplotlib.dates import date2num
 
 import plotly.plotly as py  
 import plotly.tools as tls   
@@ -21,6 +20,7 @@ from plotly.tools import FigureFactory as FF
 from datetime import datetime
 
 import matplotlib.pyplot as plt
+plt.ion()
 import matplotlib.dates as mdates
 from matplotlib.finance import candlestick_ohlc
 
@@ -145,4 +145,59 @@ def stream_plot(y, x):
     s.write(dict(x=x, y=y))  
  
     # Close the stream when done plotting
-    s.close() 
+    s.close()
+
+
+
+import warnings
+# import matplotlib.finance as fin
+
+# http://stackoverflow.com/questions/10944621/dynamically-updating-plot-in-matplotlib
+
+plt.ion()
+class DynamicUpdate:
+    def __init__(self):
+        pass
+
+    def on_launch(self, min_x, max_x):
+        #Set up plot
+        self.figure, self.ax = plt.subplots()
+        self.lines, = self.ax.plot_date([],[], 'o-')
+        self.events, = self.ax.plot_date([],[],'r*')
+        #Autoscale on unknown axis and known lims on the other
+        self.ax.set_autoscaley_on(True)
+        # self.ax.set_xlim(date2num(min_x), date2num(max_x))
+        #Other stuff
+        self.ax.grid()
+        self.event_xdata = []
+        self.event_ydata = []
+
+    def on_running(self, xdata, ydata, event_trig=False):
+        # try:
+        xdata_strp = [date2num(datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.000000Z")
+                                       ) for date in xdata]
+        #Update data (with the new _and_ the old points)
+        # self.lines.set_xdata(xdata_strp)
+        # self.lines.set_ydata(ydata)
+        self.lines.set_data(xdata_strp, ydata)
+        #Update events
+        if event_trig:
+            self.event_xdata.append(xdata_strp[-1])
+            self.event_ydata.append(ydata[-1])
+            self.events.set_xdata(self.event_xdata)
+            self.events.set_ydata(self.event_ydata)
+        #Need both of these in order to rescale
+        self.ax.relim()
+        self.ax.autoscale_view()
+        #We need to draw *and* flush
+        self.figure.canvas.draw()
+        self.figure.canvas.flush_events()
+
+
+        # except:
+        #     warnings.warn("TKinter Error: Plot closed before finished")
+
+    def save_plot(self, save_dir):
+
+        plt.savefig(save_dir)
+

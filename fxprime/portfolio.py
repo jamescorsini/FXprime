@@ -15,9 +15,14 @@ TODO: add more stats to output, like max drawdrown
 
 import logging
 from fxprime import backtester
+from fxprime import output
 from settings import *
 import os
 import pandas as pd
+import numpy as np
+import datetime as dt
+import matplotlib.pyplot as plt
+plt.ion()
 
 # TODO can make a function in scripts to get rid of this import
 import dateutil.parser
@@ -25,9 +30,9 @@ import csv
     
 class Portfolio:
     def __init__(
-        self, pairs, strategy, oanda, leverage=20, backtest_name='backtest.csv',
+        self, pairs, strategy, oanda, leverage=20, backtest_name='backtest',
         stats_name='stats.csv', equity=100000.00, risk_per_trade=0.02
-    ):      
+    ):
         
         self.strategy = strategy
         self.pairs = pairs
@@ -41,11 +46,13 @@ class Portfolio:
         # Ex. {'EUR_USD':{'type':'buy','lot':10000, 'bid':1.3424, 'ask':1.32420}}
         self.positions = {}
         self.prev_equity = self.start_equity
-    
+
     def run_backtest(self, portfolio, args, duration=50000):
         # Create results file
         # self.backtest_file_path
         self._create_equity_file()
+        self._init_portfolio_plot(min_x=dt.datetime.utcnow()-dt.timedelta(minutes=duration),
+                                  max_x=dt.datetime.utcnow())
         self.args = args
         
         # initialize backtester object
@@ -104,12 +111,38 @@ class Portfolio:
                         
         self._update_equity_file(event, candle, plots=False)#plots)
 
+        self._update_portfolio_plot(event, candle, plots=False)
+
         # Recalculates max drawdown
         if self.start_equity-self.equity > self.max_drawdown:
             self.max_drawdown = self.start_equity-self.equity
                         
         return self.equity
-        
+
+    def _init_portfolio_plot(self, min_x, max_x):
+
+        self.d = output.DynamicUpdate()
+        self.d.on_launch(min_x, max_x)
+        self.xdata = []
+        self.ydata = []
+
+    def _update_portfolio_plot(self, event, candle, plots=False):
+        """
+        This method updates the streaming portfolio plot and saves a copy for visual post analysis 
+        :param event: 
+        :param candle: 
+        :param plots: 
+        :return: 
+        """
+
+        self.xdata.append(candle['time'])
+        self.ydata.append(self.equity)
+        self.d.on_running(self.xdata, self.ydata, event['type']!=None)
+
+        # Save file
+        self.d.save_plot(self.backtest_name+'_portfolio.png')
+
+
         
     def _backtest_close(self, event, candle):
         # Closes order  
@@ -198,7 +231,7 @@ class Portfolio:
             
 
     def _create_equity_file(self):
-        filename = self.backtest_name
+        filename = self.backtest_name+'.csv'
         
         if not os.path.exists(OUTPUT_RESULTS_DIR):
             os.makedirs(OUTPUT_RESULTS_DIR)        

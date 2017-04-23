@@ -9,7 +9,7 @@ import os
 import logging
 import time
 import matplotlib
-matplotlib.use('agg')
+matplotlib.use('TkAgg')
 
 from fxprime import settings
 from fxprime import streamer
@@ -78,34 +78,35 @@ def main(oanda):
             # Create the portfolio object for strategy documentation and backtesting
             portfolio = fxprime_portfolio.Portfolio(
                                 pairs, strategy, oanda, leverage=20, 
-                                backtest_name='backtest_'+str(i)+'.csv',
+                                backtest_name='backtest_'+str(i),
                                 equity=10000.00, risk_per_trade=0.02)
-            portfolio.run_backtest(portfolio, params, duration=100000)
+            portfolio.run_backtest(portfolio, params, duration=10000)
             portfolio.create_stats_file(stats_name='stats_'+str(i)+'.csv')
-    
+
     print '--------------- FXPRIME Finished ---------------'
-    
+
     
 if __name__ == "__main__":
     
     # Log total run time
     start_time = time.time()    
 
-    # TODO: Move this into the main loop.  no need to clutter this up
     # Initialize the API env
     oanda = oandapy.API(environment=settings.ENVIRONMENT, 
                         access_token=settings.ACCESS_TOKEN)
 
     # Code cleanup for when live trader is canceled
-    try:
+    '''try:
         main(oanda)
     except KeyboardInterrupt:        
         print "Keyboard Interrupt"
-    except:
-        print "Unknown Error"
+    except Exception as e:
+        # print "Unknown Error"
+        print e
     finally:
         # TODO possible error when backtest is run this isn't necessary and will close open trades
         scripts.close_all_open(oanda, settings.ACCOUNT_ID)
-        
+    '''
+    main(oanda)
     print 'Total run time: ' + str((time.time()-start_time)/60) + ' min'
 

@@ -8,9 +8,6 @@ Created on Sun Jun 05 12:05:28 2016
 import logging
 #from fxprime import scripts
 
-import matplotlib
-matplotlib.use('agg')
-
 from fxprime import output
 
 from settings import *
