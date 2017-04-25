@@ -172,9 +172,8 @@ class trading_algo():
         T = np.array(T)
         
         # Regression
-        # TOdO: Can use .score to detmine confidence level
-        # TODO: Can average all of the fitted together to get a bettern 
-        # general estimate like tree boosting
+        # TODO: Can average all of the fitted together to get a better general estimate like tree boosting
+
         clf = svm.SVR(kernel=params['kernel'], gamma=0.1, degree=params['degree'], C=params['C'])
         #clf = svm.SVR(kernel='poly', degree=3)
         clf.fit(X, y) 

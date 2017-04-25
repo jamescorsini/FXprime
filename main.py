@@ -66,7 +66,7 @@ def main(oanda):
         # Runs backtest
 
         #args = {'C': [10,100,1000], 'n_train': [10,15,20], 'score': [0.9,0.5,0.75], 'wait': [5,10,15], 'kernel': ['poly','rbf'], 'degree': [2]}
-        args = {'C': [10], 'n_train': [10,15,20], 'score': [0.9], 'wait': [5,10,15], 'kernel': ['poly'], 'degree': [2]}
+        args = {'C': [10], 'n_train': [20], 'score': [0.8], 'wait': [10], 'kernel': ['poly'], 'degree': [2]}
         
         # list of all possibilities, iterates through
         param_grid = list(ParameterGrid(args))    

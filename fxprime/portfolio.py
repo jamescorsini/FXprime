@@ -124,7 +124,8 @@ class Portfolio:
         self.d = output.DynamicUpdate()
         self.d.on_launch(min_x, max_x)
         self.xdata = []
-        self.ydata = []
+        self.ydata1 = []
+        self.ydata2 = []
 
     def _update_portfolio_plot(self, event, candle, plots=False):
         """
@@ -136,8 +137,9 @@ class Portfolio:
         """
 
         self.xdata.append(candle['time'])
-        self.ydata.append(self.equity)
-        self.d.on_running(self.xdata, self.ydata, event['type']!=None)
+        self.ydata1.append(self.equity)
+        self.ydata2.append(candle['closeAsk'])
+        self.d.on_running(self.xdata, self.ydata1, self.ydata2, event['type'])
 
         # Save file
         self.d.save_plot(self.backtest_name+'_portfolio.png')
@@ -239,7 +241,7 @@ class Portfolio:
         self.backtest_file_path = os.path.join(OUTPUT_RESULTS_DIR, filename)
 
         #with open(self.backtest_file_path, "w") as f:
-        f = open(self.backtest_file_path, "w")
+        f = open(self.backtest_file_path, "wb")
         header = ["Timestamp", "Balance", "Event Type"]
         for pair in self.pairs:
             header.append(pair)
@@ -247,7 +249,7 @@ class Portfolio:
         #header += "\n"
         header.append("Strategy Info")
         self.writer = csv.DictWriter(f, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL, fieldnames=header)
-
+        self.writer.writeheader()
             
             
     def _update_equity_file(self, event, candle, plots=False):
@@ -255,8 +257,6 @@ class Portfolio:
         row = {}
         row['Timestamp'] = str(candle['time'])
         row['Balance'] = str(self.equity)
-
-        # TODO move strategy_info into event dict so just one var is passed
 
         if event['type'] != None:
             if plots:

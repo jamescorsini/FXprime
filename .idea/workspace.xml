@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cc61c7c-b462-4986-b6f3-c92bf18648be" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/FXprime.iml" afterPath="$PROJECT_DIR$/.idea/FXprime.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fxprime/NN_regression_strategy.py" afterPath="$PROJECT_DIR$/fxprime/NN_regression_strategy.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fxprime/backtester.py" afterPath="$PROJECT_DIR$/fxprime/backtester.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fxprime/output.py" afterPath="$PROJECT_DIR$/fxprime/output.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fxprime/portfolio.py" afterPath="$PROJECT_DIR$/fxprime/portfolio.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fxprime/strategy.py" afterPath="$PROJECT_DIR$/fxprime/strategy.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
     </list>
     <ignored path="FXprime.iws" />
@@ -34,7 +29,7 @@
       <file leaf-file-name="streamer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fxprime/streamer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
+            <state relative-caret-position="33">
               <caret line="18" column="71" lean-forward="false" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="71" />
               <folding />
             </state>
@@ -44,9 +39,11 @@
       <file leaf-file-name="NN_regression_strategy.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fxprime/NN_regression_strategy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="107" column="31" lean-forward="true" selection-start-line="107" selection-start-column="31" selection-end-line="107" selection-end-column="31" />
-              <folding />
+            <state relative-caret-position="461">
+              <caret line="154" column="0" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+              <folding>
+                <element signature="e#1508#3085#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,8 +51,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="587">
-              <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+            <state relative-caret-position="489">
+              <caret line="68" column="106" lean-forward="false" selection-start-line="68" selection-start-column="106" selection-end-line="68" selection-end-column="106" />
               <folding>
                 <element signature="e#85#94#0" expanded="true" />
               </folding>
@@ -63,11 +60,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="portfolio.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="output.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/fxprime/output.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="502">
+              <caret line="201" column="54" lean-forward="true" selection-start-line="201" selection-start-column="54" selection-end-line="201" selection-end-column="54" />
+              <folding>
+                <element signature="e#85#122#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="portfolio.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fxprime/portfolio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="247" column="9" lean-forward="false" selection-start-line="247" selection-start-column="9" selection-end-line="247" selection-end-column="9" />
+            <state relative-caret-position="606">
+              <caret line="141" column="69" lean-forward="false" selection-start-line="141" selection-start-column="69" selection-end-line="141" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -86,7 +95,7 @@
       <file leaf-file-name="backtester.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fxprime/backtester.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
+            <state relative-caret-position="3069">
               <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
               <folding />
             </state>
@@ -120,6 +129,10 @@
       <find>_update_equity_file</find>
       <find>event</find>
       <find>strategy_in</find>
+      <find>create_plot</find>
+      <find>agg</find>
+      <find>backtest_name</find>
+      <find>wait</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -129,6 +142,11 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -136,7 +154,6 @@
         <option value="$PROJECT_DIR$/fxprime/example_settings.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/fxprime/settings.py" />
         <option value="$USER_HOME$/Desktop/visualization/static/_js/accprec-gross-chart-well.js" />
         <option value="$USER_HOME$/Desktop/visualization/templates/selectme" />
         <option value="$USER_HOME$/Desktop/visualization/static/_js/cum-profit-d3.js" />
@@ -144,20 +161,24 @@
         <option value="$USER_HOME$/Desktop/visualization/static/_js/returns-d3.js" />
         <option value="$USER_HOME$/Google Drive/Education/Forex/Adrian/main.py" />
         <option value="$PROJECT_DIR$/fxprime/strategy.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/fxprime/tested.py" />
         <option value="$PROJECT_DIR$/fxprime/test_files/tested.py" />
-        <option value="$PROJECT_DIR$/fxprime/NN_regression_strategy.py" />
         <option value="$PROJECT_DIR$/fxprime/backtester.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+        <option value="$PROJECT_DIR$/fxprime/settings.py" />
+        <option value="$PROJECT_DIR$/fxprime/streamer.py" />
+        <option value="$PROJECT_DIR$/fxprime/NN_regression_strategy.py" />
+        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/fxprime/portfolio.py" />
+        <option value="$PROJECT_DIR$/fxprime/output.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="113" />
-    <option name="y" value="2" />
-    <option name="width" value="3096" />
-    <option name="height" value="1809" />
+    <option name="x" value="111" />
+    <option name="y" value="-13" />
+    <option name="width" value="3102" />
+    <option name="height" value="1826" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -218,8 +239,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/fxprime/test_files" />
     <property name="settings.editor.selected.configurable" value="tasks.servers" />
     <property name="prop_add_unversioned_files" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="_update_equity_file&#9;null&#9;null&#10;create_plot&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="create_plot&#9;null&#9;null&#10;_update_equity_file&#9;null&#9;null" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="Python" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -239,6 +261,24 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.FX Prime Main">
+    <configuration default="false" name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Anaconda2\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="FXprime" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="CompoundRunConfigurationType" factoryName="Compound Run Configuration">
       <method />
     </configuration>
@@ -374,10 +414,16 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python.FX Prime Main" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.FXPrime Tests" />
+      <item index="2" class="java.lang.String" itemvalue="Python.scratch" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.scratch" />
+      </list>
+    </recent_temporary>
     <configuration default="true" type="tests" factoryName="Attests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -406,11 +452,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <branch name="master" repository="C:\Users\james\Documents\GitHub\FXprime" original="true" />
       <changelist id="0cc61c7c-b462-4986-b6f3-c92bf18648be" name="Default" comment="" />
       <created>1480476307025</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1480476307025</updated>
+      <updated>1492953793620</updated>
     </task>
     <task id="LOCAL-00001" summary="adding gitignore and examples settings script">
       <created>1480477943408</created>
@@ -433,7 +480,26 @@
       <option name="project" value="LOCAL" />
       <updated>1480649874674</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="changed backtester equity file to csv dictwriter for ease of use">
+      <created>1492777309334</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1492777309334</updated>
+    </task>
+    <task id="FXprime-1" summary="Add plots to backtester ouputs (live streaming?)">
+      <branch name="master" repository="C:\Users\james\Documents\GitHub\FXprime" />
+      <created>1492550687000</created>
+      <option name="issue" value="true" />
+      <option name="number" value="1" />
+      <option name="presentableId" value="FXprime-1" />
+      <option name="project" value="FXprime" />
+      <option name="type" value="BUG" />
+      <updated>1492953793500</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <option name="createBranch" value="false" />
+    <option name="useBranch" value="true" />
     <servers>
       <GitHub shared="false" url="https://github.com">
         <option name="assignedIssuesOnly" value="false" />
@@ -454,38 +520,38 @@
     </servers>
   </component>
   <component name="TestHistory">
-    <history-entry file="FXPrime_Tests - 2017.04.17 at 20h 51m 25s.xml">
+    <history-entry file="FXPrime_Tests - 2017.04.24 at 21h 51m 17s.xml">
       <configuration name="FXPrime Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="FXPrime_Tests - 2017.04.17 at 20h 56m 10s.xml">
+    <history-entry file="FXPrime_Tests - 2017.04.24 at 21h 54m 01s.xml">
       <configuration name="FXPrime Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="FXPrime_Tests - 2017.04.17 at 20h 57m 29s.xml">
+    <history-entry file="FXPrime_Tests - 2017.04.24 at 22h 00m 13s.xml">
       <configuration name="FXPrime Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="FXPrime_Tests - 2017.04.17 at 20h 57m 39s.xml">
+    <history-entry file="FXPrime_Tests - 2017.04.24 at 22h 02m 24s.xml">
       <configuration name="FXPrime Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="FXPrime_Tests - 2017.04.17 at 20h 58m 18s.xml">
+    <history-entry file="FXPrime_Tests - 2017.04.24 at 22h 11m 31s.xml">
       <configuration name="FXPrime Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="FXPrime_Tests - 2017.04.17 at 21h 00m 35s.xml">
+    <history-entry file="FXPrime_Tests - 2017.04.24 at 22h 12m 39s.xml">
       <configuration name="FXPrime Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="FXPrime_Tests - 2017.04.17 at 21h 03m 37s.xml">
+    <history-entry file="FXPrime_Tests - 2017.04.24 at 22h 13m 53s.xml">
       <configuration name="FXPrime Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="FXPrime_Tests - 2017.04.17 at 21h 04m 19s.xml">
+    <history-entry file="FXPrime_Tests - 2017.04.24 at 22h 18m 34s.xml">
       <configuration name="FXPrime Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="FXPrime_Tests - 2017.04.17 at 21h 07m 16s.xml">
+    <history-entry file="FXPrime_Tests - 2017.04.24 at 22h 19m 53s.xml">
       <configuration name="FXPrime Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="FXPrime_Tests - 2017.04.17 at 21h 17m 45s.xml">
+    <history-entry file="FXPrime_Tests - 2017.04.24 at 22h 22m 53s.xml">
       <configuration name="FXPrime Tests" configurationId="tests" />
     </history-entry>
   </component>
-  <component name="TodoView">
+  <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -495,18 +561,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="113" y="2" width="3096" height="1809" extended-state="0" />
+    <frame x="111" y="-13" width="3102" height="1826" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.251004" sideWeight="0.49776927" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950923" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950923" sideWeight="0.5026774" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3320488" sideWeight="0.49732262" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32823455" sideWeight="0.49732262" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288719" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3969072" sideWeight="0.4986613" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39643085" sideWeight="0.4986613" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.251004" sideWeight="0.5022307" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32965195" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -519,23 +585,25 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975152" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975152" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950923" sideWeight="0.5026774" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975152" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975152" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975152" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24406332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32823455" sideWeight="0.49732262" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950923" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288719" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950923" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.251004" sideWeight="0.49776927" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950923" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39643085" sideWeight="0.4986613" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.251004" sideWeight="0.5022307" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32965195" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -550,43 +618,41 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <confirmRemoveEmptyChangelist value="2" />
     <MESSAGE value="adding gitignore and examples settings script" />
     <MESSAGE value="updating readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating readme" />
+    <MESSAGE value="changed backtester equity file to csv dictwriter for ease of use" />
+    <MESSAGE value="FXprime-1 Add plots to backtester ouputs (live streaming?) - Done&#10;Can now watch equity live stream as backtest is running and images are saved for each backtest" />
+    <option name="LAST_COMMIT_MESSAGE" value="FXprime-1 Add plots to backtester ouputs (live streaming?) - Done&#10;Can now watch equity live stream as backtest is running and images are saved for each backtest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/fxprime/portfolio.py</url>
-          <line>247</line>
-          <option name="timeStamp" value="15" />
+          <url>file://$PROJECT_DIR$/fxprime/NN_regression_strategy.py</url>
+          <line>217</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/fxprime/NN_regression_strategy.py</url>
+          <line>218</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/fxprime/output.py</url>
+          <line>218</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="20" />
+      <option name="time" value="29" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/visualization/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6468">
-          <caret line="196" column="14" lean-forward="false" selection-start-line="196" selection-start-column="14" selection-end-line="196" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fxprime/streamer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2409">
           <caret line="79" column="12" lean-forward="false" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -608,7 +674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2607">
           <caret line="79" column="12" lean-forward="false" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -762,13 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fxprime/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="30" column="21" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/visualization/templates/cum-profit-d3.js" />
     <entry file="file://$USER_HOME$/Desktop/visualization/static/_js/analytics-bar-accuracy-gross.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -828,14 +886,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fxprime/streamer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="71" lean-forward="false" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fxprime/SMA_Xover_strategy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3399">
@@ -843,14 +893,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fxprime/output.py">
+    <entry file="file://$PROJECT_DIR$/fxprime/tested.py" />
+    <entry file="file://$PROJECT_DIR$/fxprime/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="349">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fxprime/tested.py" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="59" column="19" lean-forward="false" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fxprime/oandapy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="270" column="39" lean-forward="false" selection-start-line="270" selection-start-column="39" selection-end-line="270" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fxprime/test_files/tested.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="792">
@@ -859,37 +923,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fxprime/NN_regression_strategy.py">
+    <entry file="file://$PROJECT_DIR$/fxprime/backtester.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="107" column="31" lean-forward="true" selection-start-line="107" selection-start-column="31" selection-end-line="107" selection-end-column="31" />
+        <state relative-caret-position="3069">
+          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fxprime/streamer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="18" column="71" lean-forward="false" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="71" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+        <state relative-caret-position="489">
+          <caret line="68" column="106" lean-forward="false" selection-start-line="68" selection-start-column="106" selection-end-line="68" selection-end-column="106" />
           <folding>
             <element signature="e#85#94#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fxprime/backtester.py">
+    <entry file="file://$PROJECT_DIR$/fxprime/NN_regression_strategy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="461">
+          <caret line="154" column="0" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+          <folding>
+            <element signature="e#1508#3085#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fxprime/portfolio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="247" column="9" lean-forward="false" selection-start-line="247" selection-start-column="9" selection-end-line="247" selection-end-column="9" />
+        <state relative-caret-position="606">
+          <caret line="141" column="69" lean-forward="false" selection-start-line="141" selection-start-column="69" selection-end-line="141" selection-end-column="69" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fxprime/output.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="201" column="54" lean-forward="true" selection-start-line="201" selection-start-column="54" selection-end-line="201" selection-end-column="54" />
+          <folding>
+            <element signature="e#85#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

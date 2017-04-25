@@ -161,34 +161,62 @@ class DynamicUpdate:
 
     def on_launch(self, min_x, max_x):
         #Set up plot
-        self.figure, self.ax = plt.subplots()
-        self.lines, = self.ax.plot_date([],[], 'o-')
-        self.events, = self.ax.plot_date([],[],'r*')
+        self.figure, (self.ax1, self.ax2) = plt.subplots(ncols=1, nrows=2)
+        self.lines1, = self.ax1.plot_date([],[], 'o-')
+        self.events1, = self.ax1.plot_date([],[],'r*')
+        self.lines2, = self.ax2.plot_date([], [], 'o-')
+        self.events2, = self.ax2.plot_date([], [], 'r*')
         #Autoscale on unknown axis and known lims on the other
-        self.ax.set_autoscaley_on(True)
+        self.ax1.set_autoscaley_on(True)
+        # self.ax2.margins(y=0, tight=True)
+        # self.ax2.relim()
+        # self.ax2.autoscale_view(tight=True, scalex=False, scaley=True)
+        self.ax2.set_autoscaley_on(True)
         # self.ax.set_xlim(date2num(min_x), date2num(max_x))
         #Other stuff
-        self.ax.grid()
+        self.ax1.grid()
+        self.ax2.grid()
         self.event_xdata = []
+        self.event_buy_xdata = []
+        self.event_sell_xdata = []
         self.event_ydata = []
 
-    def on_running(self, xdata, ydata, event_trig=False):
+    def on_running(self, xdata, ydata1, ydata2, event_trig=None):
         # try:
         xdata_strp = [date2num(datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.000000Z")
                                        ) for date in xdata]
         #Update data (with the new _and_ the old points)
         # self.lines.set_xdata(xdata_strp)
         # self.lines.set_ydata(ydata)
-        self.lines.set_data(xdata_strp, ydata)
+        self.lines1.set_data(xdata_strp, ydata1)
+        self.lines2.set_data(xdata_strp, ydata2)
         #Update events
-        if event_trig:
+        if event_trig=='buy':
+            self.event_buy_xdata.append(xdata_strp[-1])
+            self.event_ydata.append(ydata1[-1])
+            for vlin in self.event_buy_xdata:
+                self.ax1.axvline(x=vlin, linewidth=1, color='green')
+            # self.events1.set_xdata(self.event_xdata)
+            # self.events1.set_ydata(self.event_ydata)
+            # self.events2.set_xdata(self.event_xdata)
+            # self.events2.set_ydata(self.event_ydata)
+        if event_trig=='sell':
+            self.event_sell_xdata.append(xdata_strp[-1])
+            self.event_ydata.append(ydata1[-1])
+            for vlin in self.event_sell_xdata:
+                self.ax1.axvline(x=vlin, linewidth=1, color='r')
+        if event_trig == 'short':
             self.event_xdata.append(xdata_strp[-1])
-            self.event_ydata.append(ydata[-1])
-            self.events.set_xdata(self.event_xdata)
-            self.events.set_ydata(self.event_ydata)
+            self.event_ydata.append(ydata1[-1])
+            for vlin in self.event_xdata:
+                self.ax1.axvline(x=vlin, linewidth=1, color='grey')
+
         #Need both of these in order to rescale
-        self.ax.relim()
-        self.ax.autoscale_view()
+        self.ax1.relim()
+        self.ax1.autoscale_view()
+        self.ax2.relim()
+        self.ax2.autoscale_view()
+        self.ax2.set_ylim(min(ydata2),max(ydata2))
         #We need to draw *and* flush
         self.figure.canvas.draw()
         self.figure.canvas.flush_events()
